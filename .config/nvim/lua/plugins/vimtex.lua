@@ -1,5 +1,6 @@
 return {
     "lervag/vimtex",
+    lazy = false,
     init = function()
 
         -- Vim Text Config

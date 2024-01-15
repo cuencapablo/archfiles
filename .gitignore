@@ -5,6 +5,7 @@
 !.xinitrc
 !.zshenv
 !.gitignore
+!.latexmkrc
 
 ## Local files
 !.local/
