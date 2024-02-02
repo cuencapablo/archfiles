@@ -12,6 +12,12 @@ alias gc="git commit -m"
 alias gce="git config user.email"
 alias gcn="git config user.name"
 
+alias l='ls -lFh'     #size,show type,human readable
+alias la='ls -lAFh'   #long list,show almost all,show type,human readable
+alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias ldot='ls -ld .*'
+alias lS='ls -1FSsh'
+
 alias nmount="sudo mount -o gid=users,fmask=113,dmask=002 /dev/sdb1 xrousbn"
 alias unmount="sudo umount /dev/sdb1"
 

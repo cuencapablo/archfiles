@@ -354,6 +354,8 @@
     '~/Pictures/*'     PICTURES_SUB      ''
     '~/Ists'           ISTS              ''
     '~/Ists/*'         ISTS_SUB          ''
+    '~/Repos'          REPOS             '󰊢'
+    '~/Repos/*'        REPOS_SUB         '󰊢'
     '~/*'              HOME_SUB          ''
     '*'                DEFAULT           ''
    )

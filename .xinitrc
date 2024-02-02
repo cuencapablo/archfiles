@@ -47,6 +47,6 @@ eval "$(fnm env)"
 ## programs
 xbindkeys &
 unclutter &
-picom &
+xcompmgr -nC &
 dwmblocks &
 exec dwm

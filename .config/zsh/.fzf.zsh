@@ -9,13 +9,13 @@ Find_Edit() {
                 --preview 'bat --color=always --line-range :500 {}'
     )
     mimetype=$(file  --dereference --brief --mime-type  "$file" )
-case "$mimetype" in
-    image/*)                    nsxiv "$file" & disown ;;
-    text/* | */xml)             $EDITOR "$file" ;;
-    video/* | audio/*)          vlc "$file" & disown ;;
-    application/pdf)             okular "$file" & disown ;;
-    *) ;;
-esac
+    case "$mimetype" in
+        image/*)                          nsxiv "$file" & disown ;;
+        application/pdf)                  okular "$file" & disown ;;
+        text/* | application/* | */xml)   $EDITOR "$file" ;;
+        video/* | audio/*)                vlc "$file" & disown ;;
+        *) ;;
+    esac
 }
 
 # Find Directory and Change

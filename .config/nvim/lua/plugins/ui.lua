@@ -1,266 +1,42 @@
 return {
   {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
     config = function()
-      require("lualine").setup({
-        options = {
-          icons_enabled = true,
-          globalstatus = false,
-          theme = "auto",
-          disabled_filetypes = { "mason", "dashboard", "lazy", "alpha" },
-          component_separators = { left = " ", right = " " },
-          section_separators = { left = " ", right = " " },
-          ignore_focus = {},
-          always_divide_middle = true,
-          refresh = {
-            statusline = 1000,
-            -- tabline = 1000,
-          },
-        },
-        sections = {
-          lualine_a = {
-            { -- mode component
-              function()
-                return ""
-              end,
-              color = function()
-                -- auto change color according to neovims mode
-                local modecolor = {
-                  n = "#2d2a2e",
-                  i = "#ffd866",
-                  v = "#78dce8",
-                  [""] = "#FF8832",
-                  V = "#a9dc76",
-                  c = "#a678df",
-                  no = "#ff6188",
-                  s = "#FF8800",
-                  S = "#FF8832",
-                  [""] = "#6B6770",
-                  ic = "#ECBE3B",
-                  R = "#a9a1e1",
-                  Rv = "#a9a1e1",
-                  cv = "#ec5f89",
-                  ce = "#ec5f11",
-                  r = "#c1c0c0",
-                  rm = "#008080",
-                  ["r?"] = "#c1c0c0",
-                  ["!"] = "#Fc5f66",
-                  t = "#403e41",
-                }
-                return { fg = modecolor[vim.fn.mode()], bg = "None" }
-              end,
-              padding = { left = 1, right = 0 },
-            },
-          },
+      local logo = [[
+          |\      _,,,---,,_
+      ZZZzz /,`.-'`'    -.  ;-;;,_
+          |,4-  ) )-,_. ,\ (  `'-'
+          '---''(_/--'  `-'\_)  Nonyoo
+      ]]
+      logo = string.rep('\n', 8) .. logo .. '\n\n'
 
-          lualine_b = {
-            {
-              "branch",
-              icon = "",
-              padding = { left = 1, right = 0 },
-              color = { fg = "#736290", gui = "bold", bg = "None" },
-            },
+      require('dashboard').setup({
+        -- config
+        theme = 'doom',
+        config = {
+          header = vim.split(logo, '\n'),
+          center = {
+            { action = 'Telescope oldfiles', desc = ' Recent files', icon = ' ', key = 'r' },
+            { action = 'Telescope projects', desc = ' Projects', icon = ' ', key = 'p' },
+            { action = 'qa', desc = ' Quit', icon = ' ', key = 'q' },
+            { action = 'Lazy', desc = ' Lazy', icon = '󰒲 ', key = 'l' },
           },
-
-          lualine_c = {
-            {
-              "diagnostics",
-              symbols = { error = " ", warn = " ", info = "  ", hint = " " },
-              color = { bg = "None" },
-            },
-            -- { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            {
-              "filename",
-              path = 0,
-              symbols = { modified = "", readonly = "", unnamed = "[No mame]", newfile = "[New]" },
-              color = { bg = "None" },
-            },
-            -- stylua: ignore
-          },
-
-          lualine_x = {
-                -- stylua: ignore
-                -- {
-                --   function() return require("noice").api.status.command.get() end,
-                --   cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-                --   color = { fg = "#c1c0c0", bg = "#19181a" },
-                -- },
-                -- -- stylua: ignore
-                -- {
-                --   function() return require("noice").api.status.mode.get() end,
-                --   cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-                --   color = { fg = "#c1c0c0", bg = "#19181a" },
-                -- },
-                -- { require("lazy.status").updates, cond = require("lazy.status").has_updates,
-                --   color = { fg = "#c1c0c0", bg = "#19181a" },
-                -- },
-                    {
-                    "diff",
-                    symbols = { added = " ", modified = " ", removed = " " },
-                    color = { bg = 'None' },
-                    },
-          },
-
-          lualine_y = {
-            {
-              -- Lsp server name .
-              function()
-                local msg = ""
-                local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-                local clients = vim.lsp.get_active_clients()
-                if next(clients) == nil then
-                  return msg
-                end
-                for _, client in ipairs(clients) do
-                  local filetypes = client.config.filetypes
-                  if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                    return ""
-                  end
-                end
-                return msg
-              end,
-              -- icon = " ",
-              color = { fg = "#2d2a2e", bg = "None" },
-            },
-          },
-
-          lualine_z = {
-            {
-              "progress",
-              padding = { left = 1, right = 0 },
-              color = { fg = "#484849", bg = "None" },
-            },
-            {
-              "location",
-              padding = { left = 1, right = 1 },
-              color = { fg = "#484849", bg = "None" },
-            },
-            -- function()
-            --   return " " .. os.date("%R")
-            -- end,
-          },
-        },
-        extensions = {
-          "neo-tree",
+          footer = function()
+            local stats = require('lazy').stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            return { '⚡ Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
+          end,
         },
       })
     end,
   },
 
   {
-    "SmiteshP/nvim-navic",
-    enabled = false,
-    lazy = true,
-    init = function()
-      vim.g.navic_silence = true
-      require("lazyvim.util").lsp.on_attach(function(client, buffer)
-        if client.server_capabilities.documentSymbolProvider then
-          require("nvim-navic").attach(client, buffer)
-        end
-      end)
-    end,
-    opts = function()
-      local icons = {
-        File = " ",
-        Module = " ",
-        Namespace = " ",
-        Package = " ",
-        Class = " ",
-        Method = " ",
-        Property = " ",
-        Field = " ",
-        Constructor = " ",
-        Enum = " ",
-        Interface = " ",
-        Function = " ",
-        Variable = " ",
-        Constant = " ",
-        String = " ",
-        Number = " ",
-        Boolean = " ",
-        Array = " ",
-        Object = " ",
-        Key = " ",
-        Null = " ",
-        EnumMember = " ",
-        Struct = " ",
-        Event = " ",
-        Operator = " ",
-        TypeParameter = " ",
-      }
-
-      return {
-        separator = "  ",
-        highlight = false,
-        depth_limit = 5,
-        icons = icons,
-      }
-    end,
-  },
-
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    version = "v3.*",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-    },
+    'NvChad/nvim-colorizer.lua',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
-      options = {
-        mode = "tabs",
-        numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-        indicator = { style = "icon", icon = "" },
-        -- max_name_length = 10,
-        -- max_prefix_length = 10, -- prefix used when a buffer is de-duplicated
-        -- tab_size = 15,
-        diagnostics = "nvim_lsp",
-        buffer_close_icon = "",
-        modified_icon = "",
-        close_icon = "",
-        color_icons = false,
-        separator_style = "thin", --- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
-        always_show_bufferline = false,
-        show_buffer_icons = false, -- disable filetype icons for buffers
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-        show_tab_indicators = false,
-        persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-        -- can also be a table containing 2 custom separators
-        -- [focused and unfocused]. eg: { '|', '|' }
-        enforce_regular_tabs = true,
-        -- sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
-        --   -- add custom logic
-        --   return buffer_a.modified > buffer_b.modified
-        -- end
-        diagnostics_update_in_insert = false,
-        diagnostics_indicator = function(_, _, diag)
-          local icons = require("lazyvim.config").icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. " " or "") .. (diag.warning and icons.Warn .. diag.warning or "")
-          return vim.trim(ret)
-        end,
-        offsets = {
-          {
-            filetype = "neo-tree",
-            text = "Directory",
-            highlight = "NONE",
-          },
-        },
-      },
-    },
-  },
-
-  {
-    "NvChad/nvim-colorizer.lua",
-    opts = {
-      filetypes = { "*" },
+      filetypes = { '*' },
       -- all the sub-options of filetypes apply to buftypes
       user_default_options = {
         tailwind = true,
@@ -271,115 +47,6 @@ return {
         css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
       },
       buftypes = {},
-    },
-  },
-
-  {
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    opts = function(_, opts)
-      local logo = [[
-            |\      _,,,---,,_
-        ZZZzz /,`.-'`'    -.  ;-;;,_
-            |,4-  ) )-,_. ,\ (  `'-'
-            '---''(_/--'  `-'\_)  Nonyoo
-        ]]
-
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
-      opts.config.header = vim.split(logo, "\n")
-    end,
-  },
-
-  {
-    "xiyaowong/transparent.nvim",
-    lazy = false,
-    keys = {
-      -- Transparency
-      vim.keymap.set("n", "yob", "<cmd>TransparentToggle<cr>", { silent = true }),
-      desc = "Toggle transparency",
-    },
-    opts = {
-      groups = { -- table: default groups
-        "Normal",
-        "NormalNC",
-        "Comment",
-        "Constant",
-        "Special",
-        "Identifier",
-        "Statement",
-        "PreProc",
-        "Type",
-        "Underlined",
-        "Todo",
-        "String",
-        "Function",
-        "Conditional",
-        "Repeat",
-        "Operator",
-        "Structure",
-        "LineNr",
-        "NonText",
-        "SignColumn",
-        "CursorLineNr",
-        "EndOfBuffer",
-      },
-      extra_groups = {},
-      exclude_groups = {},
-    },
-  },
-
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      timeout = 1000,
-      render = "minimal",
-      stages = "static",
-    },
-  },
-
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      lsp = {
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
-        hover = { enabled = false },
-        signature = { enabled = false },
-        progress = { enabled = false },
-      },
-      routes = {
-        {
-          filter = {
-            event = "msg_show",
-            any = {
-              { find = "%d+L, %d+B" },
-              { find = "; after #%d+" },
-              { find = "; before #%d+" },
-            },
-          },
-          view = "mini",
-        },
-      },
-
-      messages = {
-        enabled = false, -- enables the Noice messages UI - That shit on the botton right
-        view = "notify", -- default view for messages
-        view_error = "notify", -- view for errors
-        view_warn = "notify", -- view for warnings
-        view_history = "messages", -- view for :messages
-        view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
-      },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        long_message_to_split = true,
-        inc_rename = true,
-        lsp_doc_border = false, -- add a border to hover docs and signature help
-      },
     },
   },
 }

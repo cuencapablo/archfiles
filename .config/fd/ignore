@@ -19,11 +19,13 @@
 .cache/
 .cargo/
 .dbgate/
+.java/
 .bun/
 **.git/
 .gnupg/
 .librewolf/
 **node_modules/
+**.next/
 .m2/
 .mongodb/
 .mplayer/
@@ -49,6 +51,7 @@
 !.config/x/
 !.config/zathura/
 .config/zsh/oh-my-zsh/
+.config/zsh/powerlevel10k/
 !.config/zsh/
 .config/tmux/plugins/
 !.config/tmux/
