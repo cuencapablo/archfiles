@@ -21,6 +21,7 @@
 .dbgate/
 .java/
 .bun/
+**.git
 **.git/
 .gnupg/
 .librewolf/

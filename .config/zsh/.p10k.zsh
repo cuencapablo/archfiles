@@ -356,6 +356,8 @@
     '~/Ists/*'         ISTS_SUB          ''
     '~/Repos'          REPOS             '󰊢'
     '~/Repos/*'        REPOS_SUB         '󰊢'
+    '~/.config/nvim'   NVIM              ''
+    '~/.config/nvim/*' NVIM_SUB          ''
     '~/*'              HOME_SUB          ''
     '*'                DEFAULT           ''
    )
