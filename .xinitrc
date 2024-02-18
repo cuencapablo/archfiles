@@ -34,6 +34,7 @@ eval "$(fnm env)"
 ## background
 /usr/bin/feh --no-fehbg --bg-fill '/home/non/Pictures/wallpaper/girlBirdGun.png'
 ## programs
+tmux has-session -t me || st -n me -e tmux new -s me &
 xbindkeys &
 unclutter &
 xcompmgr -nC &

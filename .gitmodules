@@ -1,3 +1,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:cuencapablo/nvim.git
+[submodule ".config/suckless"]
+	path = .config/suckless
+	url = git@github.com:cuencapablo/suckless.git

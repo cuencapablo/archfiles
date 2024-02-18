@@ -12,8 +12,8 @@ alias gaa='git add .'
 alias gc="git commit -m"
 alias gce="git config user.email"
 alias gcn="git config user.name"
-alias gpm="gcn 'Pablo Cuenca' | gce '148780611+cuencapm@users.noreply.github.com' "
-alias gcp="gcn 'Cuenca Pablo' | gce '108037606+cuencapablo@users.noreply.github.com' "
+alias gupm="gcn 'Pablo Cuenca' | gce '148780611+cuencapm@users.noreply.github.com' "
+alias gucp="gcn 'Cuenca Pablo' | gce '108037606+cuencapablo@users.noreply.github.com' "
 
 
 alias l='ls -lFh'     #size,show type,human readable
