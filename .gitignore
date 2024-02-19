@@ -6,6 +6,7 @@
 !.zshenv
 !.gitignore
 !.latexmkrc
+!README.md
 
 ## Local files
 !.local/
