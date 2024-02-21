@@ -9,6 +9,7 @@
 # Home files
 **/vendor/
 **.vscode/
+**.mozilla/
 **.idea/
 .gitconfig
 .mariadb_history

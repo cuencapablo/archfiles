@@ -22,21 +22,20 @@ fi
 
 # --- General Settings --- #
 ## variables
-export PATH=$HOME/.local/bin:$HOME/.local/share/applications/:$HOME/.local/bin/statusbar:/usr/local/bin:/usr/local/texlive/2023/bin/x86_64-linux:/usr/local/texlive/2023/bin/x86_64-linux:$PATH
+export PATH=$HOME/.local/bin:$HOME/.local/share/applications/:$HOME/.local/bin/statusbar:$PATH
+export PATH="/home/non/.local/share/fnm:$PATH"
 export EDITOR=nvim
-export VISUAL=nvim
-export READER=okular
-export _JAVA_AWT_WM_NONREPARENTING=1
+export READER=sioyek
 
 # Load fnm for node versions
 eval "$(fnm env)"
 
 ## background
-/usr/bin/feh --no-fehbg --bg-fill '/home/non/Pictures/wallpaper/girlBirdGun.png'
+/usr/bin/feh --no-fehbg --bg-fill '/home/non/Pictures/wallpaper/errorfun.png'
 ## programs
 tmux has-session -t me || st -n me -e tmux new -s me &
 xbindkeys &
-unclutter &
+xbanish &
 xcompmgr -nC &
 dwmblocks &
 exec dwm

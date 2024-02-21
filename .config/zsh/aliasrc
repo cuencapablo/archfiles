@@ -1,5 +1,9 @@
 alias vi=nvim
 alias svi="sudo -Es nvim"
+alias xi="sudo xbps-install"
+alias xr="sudo xbps-remove"
+alias xq="xbps-query"
+alias im="nsxiv"
 
 alias gs='git status'
 alias gf='git diff'
