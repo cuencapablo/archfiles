@@ -2,18 +2,16 @@
 n=$(light)
 light=$(echo "$n" | cut -d '.' -f 1 | tr -d '\n')
 
-if [ "$light" -eq 100 ]; then
-	echo ^c#a39a5b^"󰃠 "
-elif [ "$light" -ge 86 ]; then
-	echo ^c#a38a5b^"󰃟 "
-elif [ "$light" -ge 70 ]; then
-	echo ^c#a38a5b^"󰃞 "
-elif [ "$light" -ge 55 ]; then
-	echo ^c#a38a5b^"󰃝 "
-elif [ "$light" -ge 40 ]; then
-	echo ^c#a38a5b^"󰃜 "
-elif [ "$light" -ge 25 ]; then
-	echo ^c#a38a5b^"󰃛 "
-else
-	echo ^c#a38a5b^"󰃚 "
-fi
+[ "$light" -eq 100 ] && echo ^c#a39a5b^"󰃠" && exit
+
+case 1 in
+$((light >= 90))) icon="󰃝" ;;
+$((light >= 70))) icon="󰃟" ;;
+$((light >= 50))) icon="󰃞" ;;
+$((light >= 25))) icon="󰃜" ;;
+$((light >= 15))) icon="󰃛" ;;
+$((light >= 0))) icon="󰃚" ;;
+*) exit ;;
+esac
+
+echo ^c#a39a5b^"$icon"
