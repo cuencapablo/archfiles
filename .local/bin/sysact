@@ -7,8 +7,8 @@ case "$(readlink -f /sbin/init)" in
 esac
 
 case "$(printf "  lock\n󱥫  leave\n  reboot\n  shutdown\n󰤄  sleep\n" | dmenu -i -fn "JetBrainsMono Nerd Code:size=12" -nb "#000000" -nf "#a38a5b" -sb "#1D1D1D" -sf "#bdc3af" -p 'Action: ')" in
-'  lock') betterlockscreen -l dimblur ;;
-'󰤄  sleep') betterlockscreen -s dimblur ;;
+'  lock') $ctl lock-session ;;
+'󰤄  sleep') $ctl suspend ;;
 '󱥫  leave') pkill dwm ;;
 '  reboot') $ctl reboot ;;
 '  shutdown') $ctl poweroff -i ;;

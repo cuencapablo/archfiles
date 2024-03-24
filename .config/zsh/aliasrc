@@ -17,11 +17,10 @@ alias gc="git commit -m"
 alias gce="git config user.email"
 alias gcn="git config user.name"
 
-alias l='eza -G'   # Display as a grid
-alias ls='eza -a'   # Display as a grid
-alias la='eza -la'   # Display all files
-alias ld='eza -D1'   # Display just directories one per line
-alias ll='eza -l1a' # Display all files one per line
+alias ls='ls --color=tty'          #size,show type,human readable
+alias la='ls -Ah --color=tty'        #long list,show almost all,show type,human readable
+alias ll='ls -lAh --color=tty'           #long list
+alias lh='ls -ld .* --color=tty'
 
 alias nmount="sudo mount -o gid=users,fmask=113,dmask=002 /dev/sdb1 xrousbn"
 alias unmount="sudo umount /dev/sdb1"
