@@ -6,7 +6,7 @@ alias xq="xbps-query"
 alias im="nsxiv"
 
 alias gs='git status'
-alias gf='git diff'
+alias gd='git diff'
 alias gl='git log'
 alias gp='git push'
 alias gpu='git push -u origin main'
@@ -16,6 +16,8 @@ alias gaa='git add .'
 alias gc="git commit -m"
 alias gce="git config user.email"
 alias gcn="git config user.name"
+alias gao='git remote add origin'
+alias guo='git remote set-url origin'
 
 alias ls='ls --color=tty'          #size,show type,human readable
 alias la='ls -Ah --color=tty'        #long list,show almost all,show type,human readable

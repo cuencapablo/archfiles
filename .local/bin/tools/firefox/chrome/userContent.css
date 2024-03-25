@@ -1,0 +1,19 @@
+/*  Firefox home  */
+@-moz-document url("about:home"), url("about:newtab"), url("about:privatebrowsing") {
+  /*  Logo and Search bar  */
+  .logo-and-wordmark{display: none !important}
+  .search-wrapper {display: none !important}
+
+  /*  Background  */
+  body::before {
+      content: "" ;
+      z-index: -1 ;
+      position: fixed ;
+      top: 0 ;
+      left: 0 ;
+      background: #f9a no-repeat url(./spaceship.jpg) center ;
+      background-size: cover ;
+      width: 100vw ;
+      height: 100vh ;
+  }
+}
