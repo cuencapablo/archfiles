@@ -588,8 +588,8 @@ xkb_symbols "dvp" {
    key <AD06> { [            f,           F,        NoSymbol,   NoSymbol,   NoSymbol,   NoSymbol   ] };
    key <AD07> { [            g,           G,        NoSymbol,   NoSymbol,   NoSymbol,   NoSymbol   ] };
    key <AD08> { [            c,           C,        ccedilla,   Ccedilla,   NoSymbol,   NoSymbol   ] };
-   key <AD09> { [            r,           R,      registered,  trademark,     Delete,   NoSymbol   ] };
-   key <AD10> { [            l,           L,        NoSymbol,   NoSymbol,  BackSpace,   NoSymbol   ] };
+   key <AD09> { [            r,           R,      registered,  trademark,  BackSpace,   NoSymbol   ] };
+   key <AD10> { [            l,           L,        NoSymbol,   NoSymbol,     Delete,   NoSymbol   ] };
    key <AD11> { [        slash,    question,    questiondown,  copyright,   NoSymbol,   NoSymbol   ] };
    key <AD12> { [           at, asciicircum, dead_circumflex, dead_caron,   NoSymbol,   NoSymbol   ] };
 
@@ -600,10 +600,10 @@ xkb_symbols "dvp" {
    key <AC04> { [            u,           U,          uacute,     Uacute,   NoSymbol,   NoSymbol   ] };
    key <AC05> { [            i,           I,   	      iacute,     Iacute,   NoSymbol,   NoSymbol   ] };
    key <AC06> { [            d,           D,       therefore,    because,   NoSymbol,   NoSymbol   ] };
-   key <AC07> { [            h,           H,        notequal,  identical,       Left,   NoSymbol   ] };
-   key <AC08> { [            t,           T,         notsign,  plusminus,       Down,   NoSymbol   ] };
+   key <AC07> { [            h,           H,        notequal,   NoSymbol,       Left,   NoSymbol   ] };
+   key <AC08> { [            t,           T,         notsign,   NoSymbol,       Down,   NoSymbol   ] };
    key <AC09> { [            n,           N,          ntilde,     Ntilde,         Up,   NoSymbol   ] };
-   key <AC10> { [            s,           S,        Greek_pi,   infinity,      Right,   NoSymbol   ] };
+   key <AC10> { [            s,           S,enfilledcircbullet, NoSymbol,      Right,   NoSymbol   ] };
    key <AC11> { [        minus,  underscore,          macron,dead_macron,   NoSymbol,   NoSymbol   ] };
    key <BKSL> { [    backslash,         bar,          degree,  brokenbar,   NoSymbol,   NoSymbol   ] };
 
@@ -615,10 +615,10 @@ xkb_symbols "dvp" {
    key <AB04> { [            k,           K,          oslash,     Oslash,   NoSymbol,   NoSymbol   ] };
    key <AB05> { [            x,           X,        NoSymbol,   NoSymbol,   NoSymbol,   NoSymbol   ] };
    key <AB06> { [            b,           B,        NoSymbol,   NoSymbol,   NoSymbol,   NoSymbol   ] };
-   key <AB07> { [            m,           M,        multiply,   division,      Prior,      Prior   ] };
-   key <AB08> { [            w,           W,        NoSymbol,   NoSymbol,        End,        End   ] };
-   key <AB09> { [            v,           V,        NoSymbol,   NoSymbol,       Home,       Home   ] };
-   key <AB10> { [            z,           Z,        NoSymbol,   NoSymbol,       Next,       Next   ] };
+   key <AB07> { [            m,           M,        multiply,   division,      Prior,   NoSymbol   ] };
+   key <AB08> { [            w,           W,        NoSymbol,   NoSymbol,        End,   NoSymbol   ] };
+   key <AB09> { [            v,           V,        NoSymbol,   NoSymbol,       Home,   NoSymbol   ] };
+   key <AB10> { [            z,           Z,        NoSymbol,   NoSymbol,       Next,   NoSymbol   ] };
 
    // key <SPCE>	{ [        space,       space,    nobreakspace,   NoSymbol,      U200A,      U2009   ] };
 
