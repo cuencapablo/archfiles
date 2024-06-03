@@ -24,7 +24,7 @@ alias la='ls -Ah --color=tty'        #long list,show almost all,show type,human 
 alias ll='ls -lAh --color=tty'           #long list
 alias lh='ls -ld .* --color=tty'
 
-alias nmount="sudo mount -o gid=non /dev/sdb1 media"
+alias nmount="sudo mount /dev/sdb1 media -o uid=1000"
 alias unmount="sudo umount /dev/sdb1"
 
 alias cpdoc="cp ~/Ists/Plantilla/plantilla.tex"
@@ -53,6 +53,6 @@ function run() {
 alias cs="xclip -selection clipboard"
 alias vs="xclip -o -selection clipboard"
 
-alias sharescreen="xrandr --output HDMI-1 --mode 1920x1080 --same-as eDP-1"
+alias sharescreen="xrandr --output HDMI1 --mode 1920x1080 --same-as eDP1"
 alias sharescreen_right="xrandr --auto --output HDMI-1 --auto --right-of eDP-1"
 alias sharescreen_left="xrandr --auto --output HDMI-1 --auto --left-of eDP-1"

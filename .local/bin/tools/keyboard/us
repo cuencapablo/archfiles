@@ -603,7 +603,7 @@ xkb_symbols "dvp" {
    key <AC07> { [            h,           H,        notequal,   NoSymbol,       Left,   NoSymbol   ] };
    key <AC08> { [            t,           T,         notsign,   NoSymbol,       Down,   NoSymbol   ] };
    key <AC09> { [            n,           N,          ntilde,     Ntilde,         Up,   NoSymbol   ] };
-   key <AC10> { [            s,           S,enfilledcircbullet, NoSymbol,      Right,   NoSymbol   ] };
+   key <AC10> { [            s,           S,enfilledcircbullet,emfilledcircle, Right,   NoSymbol   ] };
    key <AC11> { [        minus,  underscore,          macron,dead_macron,   NoSymbol,   NoSymbol   ] };
    key <BKSL> { [    backslash,         bar,          degree,  brokenbar,   NoSymbol,   NoSymbol   ] };
 
